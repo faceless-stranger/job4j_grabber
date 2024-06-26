@@ -22,7 +22,6 @@ public class AlertRabbitInfo {
         метод execute(), содержащий логику выполнения задачи. Но в данный момент результат метода execute мы не получим т.к. нет триггера для запуска
         .build() - завершает создание задачи (job) и возвращает объект JobBuilder, который используется для настройки атрибутов задачи.*/
         JobDetail job = newJob(AlertRabbitInfo.PlanJob.class)
-                //.usingJobData()
                 .build();
 
         /* Но перед тем как мы создадим триггер, установим расписание его работы в .withIntervalInSeconds() указываем интервал
