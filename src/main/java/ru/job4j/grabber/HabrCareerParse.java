@@ -31,11 +31,9 @@ public class HabrCareerParse {
             Element titleElement = row.select(".vacancy-card__title").first(); /* Находит первый элемент внутри текущего блока вакансии, который имеет класс vacancy-card__title. */
             Element linkElement = titleElement.child(0);
             String vacancyName = titleElement.text();
-
             Element dateElement = row.select(".vacancy-card__date").first();
             Element linkDate = dateElement.child(0);
             String date = linkDate.attr("datetime");
-
             String link = String.format("%s%s", SOURCE_LINK, linkElement.attr("href"));
             System.out.printf("Должность - %s%nДата - %s%nСсылка - %s%n%n--------------------------------%n", vacancyName, date, link);
         });
