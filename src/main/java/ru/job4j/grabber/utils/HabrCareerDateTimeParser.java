@@ -8,11 +8,11 @@ public class HabrCareerDateTimeParser implements DateTimeParser {
 
     @Override
     public LocalDateTime parse(String parse) {
-        // Преобразуем строку в OffsetDateTime, который учитывает временную зону
+        /* Преобразуем строку в OffsetDateTime, который учитывает временную зону */
         OffsetDateTime offsetDateTime = OffsetDateTime.parse(parse);
-        // Преобразуем OffsetDateTime в LocalDateTime, который не учитывает временную зону
+        /* Преобразуем OffsetDateTime в LocalDateTime, который не учитывает временную зону */
         LocalDateTime localDateTime = offsetDateTime.toLocalDateTime();
-        // Выводим результат для проверки
+        /* Выводим результат для проверки */
         return localDateTime;
     }
 }

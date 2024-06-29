@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 public class HabrCareerParse {
 
     private static final String SOURCE_LINK = "https://career.habr.com";
+
+    private static final int  PAGE_NUMBER = 5;
     public static final String PREFIX = "/vacancies?page=";
     public static final String SUFFIX = "&q=Java%20developer&type=all";
 
