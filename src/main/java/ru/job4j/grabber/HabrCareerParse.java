@@ -8,7 +8,6 @@ import org.jsoup.select.Elements;
 import ru.job4j.grabber.utils.HabrCareerDateTimeParser;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class HabrCareerParse {
@@ -41,10 +40,23 @@ public class HabrCareerParse {
                 HabrCareerDateTimeParser timeParser = new HabrCareerDateTimeParser();
                 LocalDateTime localDateTime = timeParser.parse(date);
                 String link = String.format("%s%s", SOURCE_LINK, linkElement.attr("href"));
+
+                HabrCareerParse habrCareerParse = new HabrCareerParse();
+                try {
+                    habrCareerParse.retrieveDescription(link);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
                 System.out.printf("Должность - %s%nДата - %s%nСсылка - %s%n%n--------------------------------%n", vacancyName, localDateTime, link);
             });
             System.out.println(String.format("%n-----------------Страница %d -----------------%n", pageNumber));
             pageNumber++;
         }
+    }
+
+    public String retrieveDescription(String link) throws IOException { // УБРАТЬ ПОТОМ ПАБЛИК!!!
+        Connection connection = Jsoup.connect(link);
+        return connection.get().select(".vacancy-description__text").text();
     }
 }
