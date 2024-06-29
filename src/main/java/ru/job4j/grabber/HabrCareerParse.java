@@ -40,14 +40,6 @@ public class HabrCareerParse {
                 HabrCareerDateTimeParser timeParser = new HabrCareerDateTimeParser();
                 LocalDateTime localDateTime = timeParser.parse(date);
                 String link = String.format("%s%s", SOURCE_LINK, linkElement.attr("href"));
-
-                HabrCareerParse habrCareerParse = new HabrCareerParse();
-                try {
-                    habrCareerParse.retrieveDescription(link);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
                 System.out.printf("Должность - %s%nДата - %s%nСсылка - %s%n%n--------------------------------%n", vacancyName, localDateTime, link);
             });
             System.out.println(String.format("%n-----------------Страница %d -----------------%n", pageNumber));
