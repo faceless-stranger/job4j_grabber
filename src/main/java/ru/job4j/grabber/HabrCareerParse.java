@@ -47,7 +47,7 @@ public class HabrCareerParse {
         }
     }
 
-    public String retrieveDescription(String link) throws IOException { // УБРАТЬ ПОТОМ ПАБЛИК!!!
+    private String retrieveDescription(String link) throws IOException {
         Connection connection = Jsoup.connect(link);
         return connection.get().select(".vacancy-description__text").text();
     }
