@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HabrCareerDateTimeParserTest {
+class HaberCareerDateTimeParserTest {
 
     @Test
     void testParseValidDateTimeString() {
