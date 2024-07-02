@@ -77,11 +77,11 @@ public class Post {
         if (!(o instanceof Post post)) {
             return false;
         }
-        return id == post.id;
+        return id == post.id && Objects.equals(link, post.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, link);
     }
 }
