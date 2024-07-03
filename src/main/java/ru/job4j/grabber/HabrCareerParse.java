@@ -18,7 +18,7 @@ public class HabrCareerParse implements Parse {
 
     private static final String SOURCE_LINK = "https://career.habr.com";
 
-    private static final int PAGE_NUMBER = 5;
+    public static final int PAGE_NUMBER = 2;
     public static final String PREFIX = "/vacancies?page=";
     public static final String SUFFIX = "&q=Java%20developer&type=all";
 
@@ -26,7 +26,7 @@ public class HabrCareerParse implements Parse {
         this.dateTimeParser = dateTimeParser;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static List<Post> startParse() throws IOException {
         DateTimeParser parser = new HabrCareerDateTimeParser();
         HabrCareerParse habrCareerParse = new HabrCareerParse(parser);
         List<Post> result = new ArrayList();
@@ -38,7 +38,7 @@ public class HabrCareerParse implements Parse {
             /* ведёт нумерацию страниц */
             page++;
         }
-
+        return result;
     }
 
     /* Получает описание вакансии */
@@ -73,7 +73,7 @@ public class HabrCareerParse implements Parse {
         String date = linkDate.attr("datetime");
         String linkVacancy = String.format("%s%s", SOURCE_LINK, linkElement.attr("href"));
         dateTimeParser.parse(date);
-        String description  = retrieveDescription(linkVacancy);
+        String description = retrieveDescription(linkVacancy);
         return new Post(1, vacancyName, linkVacancy, description, dateTimeParser.parse(date));
     }
 }
